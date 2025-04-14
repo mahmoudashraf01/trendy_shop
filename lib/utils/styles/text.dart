@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trendy_shop/utils/colors.dart';
+import 'package:trendy_shop/utils/styles/colors.dart';
 
 TextStyle h1 = const TextStyle(
     fontSize: 48,

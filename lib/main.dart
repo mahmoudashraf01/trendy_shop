@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Trendy Shop App',
-      home: const ChoseProductOnBoardingScreen(),
+      home: const PageBuilderOnBoardingScreen(),
     );
   }
 }

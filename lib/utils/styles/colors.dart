@@ -6,5 +6,6 @@ abstract class AppColors {
   static const Color black = Colors.black;
   static const Color grey = Colors.grey;
   static const Color perple =  Color.fromARGB(255, 101, 47, 176);
+  static const Color appBordersColor =  Color(0xfffb6f92);
   static const Color darkPerple =  Color.fromARGB(255, 48, 27, 78);
 }
