@@ -1,4 +1,7 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:trendy_shop/core/constants/app_routers.dart';
+import 'package:trendy_shop/data/data_source/static/static.dart';
 
 abstract class OnBoardingController extends GetxController {
   next();
@@ -6,9 +9,33 @@ abstract class OnBoardingController extends GetxController {
 }
 
 class OnBoardingControllerImp extends OnBoardingController {
+  int currPage = 0;
+
+  late PageController pageController;
   @override
-  next() {}
+  next() {
+    currPage++;
+    if (currPage > onBoardingList.length - 1) {
+      Get.offAllNamed(AppRouters.login);
+    }
+    else{
+      pageController.animateToPage(
+      currPage,
+      duration: const Duration(milliseconds: 700),
+      curve: Curves.easeInOut,
+    );
+    }
+  }
 
   @override
-  onPageChanged(int index) {}
+  onPageChanged(int index) {
+    currPage = index;
+    update();
+  }
+
+  @override
+  void onInit() {
+    pageController = PageController();
+    super.onInit();
+  }
 }
