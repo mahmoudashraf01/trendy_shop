@@ -4,6 +4,7 @@ import 'package:trendy_shop/controllers/on_boarding_controller.dart';
 import 'package:trendy_shop/data/data_source/static/static.dart';
 import 'package:trendy_shop/view/widgets/on_boarding/background_image.dart';
 import 'package:trendy_shop/view/widgets/on_boarding/cutom_onboarding_button.dart';
+import 'package:trendy_shop/view/widgets/on_boarding/cutom_onboarding_skip_button.dart';
 import 'package:trendy_shop/view/widgets/on_boarding/get_builder_controller.dart';
 import 'package:trendy_shop/view/widgets/on_boarding/on_boarding_texts.dart';
 
@@ -30,8 +31,10 @@ class OnboardingBody extends GetView<OnBoardingControllerImp> {
               child: Column(
                 children: [
                   GetBuilderController(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 40),
                   CustomOnboardingButton(),
+                  SizedBox(height: 20),
+                  CustomOnboardingSkipButton(),
                 ],
               ),
             ),
