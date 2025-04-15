@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:trendy_shop/core/services/services.dart';
 import 'package:trendy_shop/routes.dart';
 import 'package:trendy_shop/view/screens/choose_product_on_boarding_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await inialilService();
   runApp(const MyApp());
 }
 
