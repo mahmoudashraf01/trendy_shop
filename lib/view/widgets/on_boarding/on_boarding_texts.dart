@@ -18,13 +18,16 @@ class OnBoardingTexts extends StatelessWidget {
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.height * 0.3,
             ),
-            child: Container(
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Text(
-                onBoardingList[textsIndex].body!,
-                style: h4Bold,
-                textAlign: TextAlign.center,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: double.infinity,
+                alignment: Alignment.center,
+                child: Text(
+                  onBoardingList[textsIndex].body!,
+                  style: h4Bold,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),
