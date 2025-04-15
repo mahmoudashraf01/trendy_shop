@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
+import 'package:trendy_shop/utils/styles/text.dart';
 
 class EmailField extends StatelessWidget {
   const EmailField({super.key, required this.emailController});
@@ -15,6 +16,8 @@ class EmailField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Email'.tr,
         hintText: 'Enter your email'.tr,
+        labelStyle: title2.copyWith(color: Colors.black),
+        hintStyle: title2Bold.copyWith(color: Colors.black54),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 25,

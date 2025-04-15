@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
+import 'package:trendy_shop/utils/styles/text.dart';
 
 class PasswordField extends StatelessWidget {
   const PasswordField({super.key, required this.passwordController});
@@ -14,6 +15,8 @@ class PasswordField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Password'.tr,
         hintText: 'Enter your password'.tr,
+        labelStyle: title2.copyWith(color: Colors.black),
+        hintStyle: title2Bold.copyWith(color: Colors.black54),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 25,

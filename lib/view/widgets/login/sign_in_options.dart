@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
+import 'package:trendy_shop/utils/styles/text.dart';
 
 class SignInOptions extends StatelessWidget {
   const SignInOptions({super.key});
@@ -12,7 +13,7 @@ class SignInOptions extends StatelessWidget {
       children: [
         Text(
           "Don't have an account? ".tr,
-          style: const TextStyle(fontSize: 16),
+          style: title1.copyWith(color: Colors.black87),
         ),
         GestureDetector(
           onTap: () {
@@ -20,7 +21,7 @@ class SignInOptions extends StatelessWidget {
           },
           child: Text(
             'Sign Up'.tr,
-            style: TextStyle(fontSize: 16, color: AppColors.appBordersColor),
+            style: title2.copyWith(color: AppColors.appBordersColor),
           ),
         ),
       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
+import 'package:trendy_shop/utils/styles/text.dart';
 
 class RememberForgetRow extends StatelessWidget {
   const RememberForgetRow({
@@ -21,7 +22,7 @@ class RememberForgetRow extends StatelessWidget {
           activeColor: AppColors.appBordersColor,
           onChanged: onChanged,
         ),
-        Text('Remember me'.tr, style: const TextStyle(fontSize: 14)),
+        Text('Remember me'.tr, style: title2.copyWith(color: Colors.black87)),
         const Spacer(),
         TextButton(
           onPressed: () {
@@ -29,10 +30,11 @@ class RememberForgetRow extends StatelessWidget {
           },
           child: Text(
             'Forgot Password'.tr,
-            style: TextStyle(
+            style: body.copyWith(
               decoration: TextDecoration.underline,
-              color: Colors.grey,
-              fontSize: 14,
+              color: AppColors.grey,
+              fontSize: 15,
+              decorationColor: AppColors.grey,
             ),
           ),
         ),
