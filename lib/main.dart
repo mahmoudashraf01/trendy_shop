@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:trendy_shop/view/screens/choose_product_on_boarding_screen.dart';
+import 'package:get/get.dart';
+import 'package:trendy_shop/core/localization/change_local.dart';
+import 'package:trendy_shop/core/localization/translations.dart';
+import 'package:trendy_shop/core/services/services.dart';
+import 'package:trendy_shop/routes.dart';
+import 'package:trendy_shop/view/screens/language.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await inialilService();
   runApp(const MyApp());
 }
 
@@ -11,10 +18,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    LocalController localController = Get.put(LocalController());
+    return GetMaterialApp(
+      locale: localController.intitlang,
+      translations: AppTranslation(),
+      debugShowCheckedModeBanner: false,
       title: 'Trendy Shop App',
-      home: const ChoseProductOnBoardingScreen(),
+      home: const AppLangauge(),
+      routes: routes,
     );
   }
 }
-
