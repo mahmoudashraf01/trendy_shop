@@ -7,12 +7,12 @@ class RememberForgetRow extends StatelessWidget {
   const RememberForgetRow({
     super.key,
     required this.rememberMe,
-    required this.onChanged,
+    required this.onChanged, required this.onPressed,
   });
 
   final bool rememberMe;
   final void Function(bool?) onChanged;
-
+final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,9 +25,7 @@ class RememberForgetRow extends StatelessWidget {
         Text('Remember me'.tr, style: title2.copyWith(color: Colors.black87)),
         const Spacer(),
         TextButton(
-          onPressed: () {
-            // TODO: Navigate to forgot password screen
-          },
+          onPressed: onPressed,
           child: Text(
             'Forgot Password'.tr,
             style: body.copyWith(

@@ -5,6 +5,8 @@ import 'package:trendy_shop/core/constants/app_routers.dart';
 abstract class LoginController extends GetxController {
   login();
   goToSignUp();
+  goToForgetPassword();
+
 }
 
 class LoginControllerImp extends LoginController {
@@ -17,6 +19,11 @@ class LoginControllerImp extends LoginController {
   @override
   goToSignUp() {
     Get.toNamed(AppRouters.signUp);
+  }
+
+   @override
+  goToForgetPassword() {
+    Get.toNamed(AppRouters.forgetPassword);
   }
 
   @override
@@ -32,4 +39,6 @@ class LoginControllerImp extends LoginController {
     passwordController.dispose();
     super.dispose();
   }
+  
+ 
 }

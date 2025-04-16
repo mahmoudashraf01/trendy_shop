@@ -6,7 +6,6 @@ import 'package:trendy_shop/utils/styles/text.dart';
 import 'package:trendy_shop/view/widgets/login/build_email_field.dart';
 import 'package:trendy_shop/view/widgets/login/build_password_field.dart';
 import 'package:trendy_shop/view/widgets/login/continue_button.dart';
-import 'package:trendy_shop/view/widgets/login/remember_to_forget_row.dart';
 import 'package:trendy_shop/view/widgets/login/social_login_options.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
 import 'package:trendy_shop/view/widgets/sign_up/name_field.dart';
@@ -22,7 +21,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -72,15 +70,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Remember me and Forgot Password
-                RememberForgetRow(
-                  rememberMe: _rememberMe,
-                  onChanged: (value) {
-                    setState(() {
-                      _rememberMe = value!;
-                    });
-                  },
-                ),
                 const SizedBox(height: 30),
 
                 // Continue Button

@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     setState(() {
                       _rememberMe = value!;
                     });
-                  },
+                  }, onPressed: loginController.goToForgetPassword,
                 ),
                 const SizedBox(height: 30),
 
