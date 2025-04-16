@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trendy_shop/controllers/auth/login.dart';
+import 'package:trendy_shop/controllers/auth/sign_up.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
 import 'package:trendy_shop/view/widgets/login/build_email_field.dart';
 import 'package:trendy_shop/view/widgets/login/build_password_field.dart';
 import 'package:trendy_shop/view/widgets/login/continue_button.dart';
 import 'package:trendy_shop/view/widgets/login/remember_to_forget_row.dart';
-import 'package:trendy_shop/view/widgets/login/sign_in_options.dart';
 import 'package:trendy_shop/view/widgets/login/social_login_options.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
+import 'package:trendy_shop/view/widgets/sign_up/name_field.dart';
+import 'package:trendy_shop/view/widgets/sign_up/phone_field.dart';
+import 'package:trendy_shop/view/widgets/sign_up/sign_up_options.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
-    LoginControllerImp loginController = Get.put(LoginControllerImp());
+    SignUpControllerImp signUpController = Get.put(SignUpControllerImp());
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: MyBackButton(
-          onPressed: () => Get.toNamed(AppRouters.onBoarding),
-        ),
+        leading: MyBackButton(onPressed: () => Get.toNamed(AppRouters.login)),
         title: Text(
-          'Sign in'.tr,
+          'Sign Up'.tr,
           style: h3Bold.copyWith(color: Colors.black54),
         ),
         centerTitle: true,
@@ -49,25 +49,26 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  'Welcome Back'.tr,
+                  'Create Profile'.tr,
                   style: h2Bold.copyWith(color: Colors.black87, fontSize: 28),
                 ),
-                const SizedBox(height: 12),
-                Text(
-                  'Sign in with your email and password\nor continue with social media'
-                      .tr,
-                  textAlign: TextAlign.center,
-                  style: title1.copyWith(color: Colors.black87),
-                ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
+
+                //Name Field
+                NameField(nameController: signUpController.nameController),
+                const SizedBox(height: 20),
 
                 // Email Field
-                EmailField(emailController: loginController.emailController),
+                EmailField(emailController: signUpController.emailController),
+                const SizedBox(height: 20),
+
+                //Name Field
+                PhoneField(phoneController: signUpController.phoneController),
                 const SizedBox(height: 20),
 
                 // Password Field
                 PasswordField(
-                  passwordController: loginController.passwordController,
+                  passwordController: signUpController.passwordController,
                 ),
                 const SizedBox(height: 20),
 
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 20),
 
                 // Sign Up Option
-                SignInOptions(onTap: loginController.goToSignUp),
+                SignUpOptions(onTap: () => signUpController.goToLogin()),
               ],
             ),
           ),
