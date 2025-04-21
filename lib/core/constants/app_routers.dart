@@ -4,8 +4,11 @@ class AppRouters{
   static const String onBoarding = "/onBoarding";
   static const String forgetPassword = "/forgetPassword";
   static const String verifyCode = "/VerifyCode";
+  static const String signUpVerifyCode = "/signUpVerifyCode";
   static const String resetPassword = "/resetPassword";
-  static const String checkEmail = "/checkEmail";
+  static const String logincheckEmail = "/logincheckEmail";
+  static const String signUpCheckEmail = "/signUpCheckEmail";
   static const String scussessSignUp = "/scussessSignUp";
   static const String scussessResetPass= "/scussessResetPass";
+  static const String home= "/home";
 }

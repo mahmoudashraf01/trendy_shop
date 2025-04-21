@@ -2,20 +2,22 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
 
-abstract class CheckEmailController extends GetxController {
+abstract class SignUpCheckEmailController extends GetxController {
   checkEmail();
-  goSuccesSignUp();
+  goToSignUpVerifyCode();
 }
 
-class CheckEmailControllerImp extends CheckEmailController {
+class SignUpCheckEmailControllerImp extends SignUpCheckEmailController {
   late TextEditingController emailController;
 
   @override
-  checkEmail() {}
+  checkEmail() {
+
+  }
 
   @override
-  goSuccesSignUp() {
-    Get.toNamed(AppRouters.scussessSignUp);
+  goToSignUpVerifyCode() {
+    Get.toNamed(AppRouters.signUpVerifyCode);
   }
 
   @override

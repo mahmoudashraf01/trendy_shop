@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trendy_shop/controllers/auth/verfiy_code.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
@@ -16,6 +17,10 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    VerifyCodeControllerImp verifyCodeControllerImp = Get.put(
+      VerifyCodeControllerImp(),
+    );
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -47,7 +52,11 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                 const SizedBox(height: 50),
 
                 // Email Field
-                VerifyOtpTextField(),
+                VerifyOtpTextField(
+                  onSubmit: (String verificationCode) {
+                    verifyCodeControllerImp.goToResetPassword();
+                  },
+                ),
               ],
             ),
           ),

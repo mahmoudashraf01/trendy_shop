@@ -14,7 +14,9 @@ class LoginControllerImp extends LoginController {
   late TextEditingController passwordController;
 
   @override
-  login() {}
+  login() {
+    
+  }
 
   @override
   goToSignUp() {

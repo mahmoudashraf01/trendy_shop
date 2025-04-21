@@ -6,13 +6,11 @@ import 'package:trendy_shop/view/screens/func/otp_create_style_fun.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class VerifyOtpTextField extends StatelessWidget {
-  const VerifyOtpTextField({super.key});
+  const VerifyOtpTextField({super.key, required this.onSubmit});
+  final void Function(String) onSubmit;
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImp verifyCodeControllerImp = Get.put(
-      VerifyCodeControllerImp(),
-    );
     List<TextStyle> otpTextStyles = [
       createStyle(AppColors.accentPurpleColor, context),
       createStyle(AppColors.accentYellowColor, context),
@@ -33,9 +31,7 @@ class VerifyOtpTextField extends StatelessWidget {
         //handle validation or checks here if necessary
       },
       //runs when every textfield is filled
-      onSubmit: (String verificationCode) {
-        verifyCodeControllerImp.goToResetPassword();
-      },
+      onSubmit: onSubmit,
     );
   }
 }

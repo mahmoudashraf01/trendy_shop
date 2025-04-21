@@ -94,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SnackBar(content: Text('Processing login...'.tr)),
                       );
                     }
+                    loginController.login();
                   },
                 ),
                 const SizedBox(height: 40),
