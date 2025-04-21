@@ -19,5 +19,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRouters.resetPassword: (context) => const ResetPasswordScreen(),
   AppRouters.checkEmail: (context) => const CheckEmailScreen(),
   AppRouters.scussessSignUp: (context) => const SuccessSignUp(),
-  AppRouters.scussessResetPass: (context) => const SuccsessResetPassword(),
+  AppRouters.scussessResetPass: (context) => SuccessResetPassword(),
 };
