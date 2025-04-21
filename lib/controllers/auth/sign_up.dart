@@ -14,11 +14,13 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController passwordController;
 
   @override
-  signUp() {}
+  signUp() {
+    Get.offNamed(AppRouters.checkEmail);
+  }
 
   @override
   goToLogin() {
-    Get.toNamed(AppRouters.login);
+    Get.offNamed(AppRouters.login);
   }
 
   @override

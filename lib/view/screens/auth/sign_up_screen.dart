@@ -67,13 +67,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // Password Field
                 PasswordField(
                   passwordController: signUpController.passwordController,
+                  hintTxt: 'Enter Your Password',
                 ),
                 const SizedBox(height: 20),
 
                 const SizedBox(height: 30),
 
                 // Continue Button
-                ContinueButton(formKey: _formKey),
+                ContinueButton(
+                  formKey: _formKey,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Processing sign up...'.tr)),
+                      );
+                    }
+                    signUpController.signUp();
+                  },
+                ),
                 const SizedBox(height: 40),
 
                 // Social Login Options

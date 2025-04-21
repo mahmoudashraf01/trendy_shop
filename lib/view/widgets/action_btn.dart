@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
 
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    super.key,
-    required this.formKey,
-    required this.onPressed,
-  });
-  final GlobalKey<FormState> formKey;
+class ActionBtn extends StatelessWidget {
+  const ActionBtn({super.key, required this.btnText, required this.onPressed});
+  final String btnText;
   final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +20,7 @@ class ContinueButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Text(
-          'Continue'.tr,
+          btnText.tr,
           style: const TextStyle(fontSize: 18, color: Colors.white),
         ),
       ),

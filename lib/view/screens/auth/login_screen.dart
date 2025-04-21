@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Password Field
                 PasswordField(
                   passwordController: loginController.passwordController,
+                  hintTxt: 'Enter Your Password',
                 ),
                 const SizedBox(height: 20),
 
@@ -78,12 +79,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     setState(() {
                       _rememberMe = value!;
                     });
-                  }, onPressed: loginController.goToForgetPassword,
+                  },
+                  onPressed: loginController.goToForgetPassword,
                 ),
                 const SizedBox(height: 30),
 
                 // Continue Button
-                ContinueButton(formKey: _formKey),
+                ContinueButton(
+                  formKey: _formKey,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // TODO: Implement login functionality
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Processing login...'.tr)),
+                      );
+                    }
+                  },
+                ),
                 const SizedBox(height: 40),
 
                 // Social Login Options

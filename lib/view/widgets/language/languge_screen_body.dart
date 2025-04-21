@@ -7,10 +7,7 @@ import 'package:trendy_shop/utils/styles/text.dart';
 import 'package:trendy_shop/view/widgets/language/build_language_button.dart';
 
 class LanguageScreenBody extends StatelessWidget {
-  const LanguageScreenBody({
-    super.key,
-    required this.controller,
-  });
+  const LanguageScreenBody({super.key, required this.controller});
 
   final LocalController controller;
 
@@ -21,10 +18,7 @@ class LanguageScreenBody extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            AppColors.appBordersColor,
-            AppColors.appBorderslighterColor,
-          ],
+          colors: [AppColors.appBordersColor, AppColors.appBorderslighterColor],
         ),
       ),
       child: Center(
@@ -74,8 +68,10 @@ class LanguageScreenBody extends StatelessWidget {
                       style: title1Bold.copyWith(color: AppColors.black),
                     ),
                     backgroundColor: AppColors.appBordersmorelighterColor,
+                    duration: Duration(seconds: 1),
                   ),
                 );
+                Future.delayed(Duration(seconds: 2));
                 Get.toNamed(AppRouters.onBoarding);
               },
             ),

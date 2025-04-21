@@ -4,7 +4,7 @@ import 'package:trendy_shop/core/localization/change_local.dart';
 import 'package:trendy_shop/core/localization/translations.dart';
 import 'package:trendy_shop/core/services/services.dart';
 import 'package:trendy_shop/routes.dart';
-import 'package:trendy_shop/view/screens/language.dart';
+import 'package:trendy_shop/view/screens/language/language.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trendy_shop/controllers/auth/forget_passwrod.dart';
+import 'package:trendy_shop/controllers/auth/reset_password.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
-import 'package:trendy_shop/view/widgets/login/build_email_field.dart';
+import 'package:trendy_shop/view/widgets/login/build_password_field.dart';
 import 'package:trendy_shop/view/widgets/login/continue_button.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
 
@@ -18,8 +18,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordControllerImp forgetPasswrodController = Get.put(
-      ForgetPasswordControllerImp(),
+    ResetPasswordControllerImp resetPasswordControllerImp = Get.put(
+      ResetPasswordControllerImp(),
     );
     return Scaffold(
       backgroundColor: Colors.white,
@@ -27,10 +27,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: MyBackButton(
-          onPressed: () => Get.toNamed(AppRouters.onBoarding),
+          onPressed: () => Get.toNamed(AppRouters.verifyCode),
         ),
         title: Text(
-          'Forget Password'.tr,
+          'Reset Password'.tr,
           style: h3Bold.copyWith(color: Colors.black54),
         ),
         centerTitle: true,
@@ -43,25 +43,32 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 20),
-                Text(
-                  'Verify Your Email'.tr,
-                  style: h2Bold.copyWith(color: Colors.black87, fontSize: 28),
-                ),
-                const SizedBox(height: 12),
-
                 const SizedBox(height: 50),
 
                 // Email Field
-                EmailField(
-                  emailController: forgetPasswrodController.emailController,
+                PasswordField(
+                  passwordController:
+                      resetPasswordControllerImp.passwordController,
+                  hintTxt: 'Enter New Password',
+                ),
+                const SizedBox(height: 50),
+                PasswordField(
+                  passwordController:
+                      resetPasswordControllerImp.confirmPasswrod,
+                  hintTxt: 'Confirm New Password',
                 ),
 
                 // Remember me and Forgot Password
                 const SizedBox(height: 30),
 
                 // Continue Button
-                ContinueButton(formKey: _formKey),
+                ContinueButton(
+                  formKey: _formKey,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                    resetPasswordControllerImp.goToSuccessResetPassword();
+                  },
+                ),
                 const SizedBox(height: 40),
               ],
             ),

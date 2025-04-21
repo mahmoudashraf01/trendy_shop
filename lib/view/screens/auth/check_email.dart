@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trendy_shop/controllers/auth/forget_passwrod.dart';
+import 'package:trendy_shop/controllers/auth/check_email.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
 import 'package:trendy_shop/view/widgets/action_btn.dart';
 import 'package:trendy_shop/view/widgets/login/build_email_field.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({super.key});
+class CheckEmailScreen extends StatefulWidget {
+  const CheckEmailScreen({super.key});
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  State<CheckEmailScreen> createState() => _VerifyCodeScreenState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+class _VerifyCodeScreenState extends State<CheckEmailScreen> {
+  CheckEmailControllerImp checkEmailController = Get.put(
+      CheckEmailControllerImp(),
+    );
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordControllerImp forgetPasswrodController = Get.put(
-      ForgetPasswordControllerImp(),
-    );
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -28,7 +28,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         elevation: 0,
         leading: MyBackButton(onPressed: () => Get.toNamed(AppRouters.login)),
         title: Text(
-          'Forget Password'.tr,
+          'Check Email'.tr,
           style: h3Bold.copyWith(color: Colors.black54),
         ),
         centerTitle: true,
@@ -43,7 +43,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  'Verify Your Email'.tr,
+                  'Success Sign Up'.tr,
                   style: h2Bold.copyWith(color: Colors.black87, fontSize: 28),
                 ),
                 const SizedBox(height: 12),
@@ -52,7 +52,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
                 // Email Field
                 EmailField(
-                  emailController: forgetPasswrodController.emailController,
+                  emailController: checkEmailController.emailController,
                 ),
 
                 // Remember me and Forgot Password
@@ -60,10 +60,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
                 // Continue Button
                 ActionBtn(
-                  btnText: 'Enter To Verify',
+                  btnText: 'Check',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {}
-                    forgetPasswrodController.goToVerifyCode();
+                    checkEmailController.goSuccesSignUp();
                   },
                 ),
                 const SizedBox(height: 40),

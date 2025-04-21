@@ -4,9 +4,13 @@ import 'package:trendy_shop/utils/styles/colors.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
 
 class PasswordField extends StatelessWidget {
-  const PasswordField({super.key, required this.passwordController});
+  const PasswordField({
+    super.key,
+    required this.passwordController,
+    required this.hintTxt,
+  });
   final TextEditingController passwordController;
-
+  final String hintTxt;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -14,7 +18,7 @@ class PasswordField extends StatelessWidget {
       obscureText: true,
       decoration: InputDecoration(
         labelText: 'Password'.tr,
-        hintText: 'Enter your password'.tr,
+        hintText: hintTxt.tr,
         labelStyle: title2.copyWith(color: Colors.black),
         hintStyle: title2Bold.copyWith(color: Colors.black54),
         floatingLabelBehavior: FloatingLabelBehavior.always,

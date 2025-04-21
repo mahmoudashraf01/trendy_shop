@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trendy_shop/core/constants/app_routers.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
 
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    super.key,
-    required this.formKey,
-    required this.onPressed,
-  });
+class VerifyCodeBtn extends StatelessWidget {
+  const VerifyCodeBtn({super.key, required this.formKey});
   final GlobalKey<FormState> formKey;
-  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,10 +18,17 @@ class ContinueButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(28),
           ),
         ),
-        onPressed: onPressed,
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text('Processing login...'.tr)));
+          }
+          Get.toNamed(AppRouters.resetPassword);
+        },
         child: Text(
-          'Continue'.tr,
-          style: const TextStyle(fontSize: 18, color: Colors.white),
+          'Verify Sent Code'.tr,
+          style: const TextStyle(fontSize: 22, color: Colors.white),
         ),
       ),
     );
