@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/controllers/auth/reset_password.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
+import 'package:trendy_shop/core/func/validate_input.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
-import 'package:trendy_shop/view/widgets/login/build_password_field.dart';
-import 'package:trendy_shop/view/widgets/login/continue_button.dart';
+import 'package:trendy_shop/view/widgets/action_btn.dart';
+import 'package:trendy_shop/view/widgets/custom_input_field.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
+class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
 
-  @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
-}
-
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     ResetPasswordControllerImp resetPasswordControllerImp = Get.put(
@@ -39,33 +34,56 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Form(
-            key: _formKey,
+            key: resetPasswordControllerImp.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
 
-                // Email Field
-                PasswordField(
-                  passwordController:
+                // password Field
+                CustomInputField(
+                  inputFiledController:
                       resetPasswordControllerImp.passwordController,
                   hintTxt: 'Enter New Password',
+                  labelTxt: 'password',
+                  icon: Icons.lock_outline,
+                  validator: (value) {
+                    return validateInput(
+                      value: value!,
+                      minValue: 5,
+                      maxValue: 50,
+                      valueType: 'passsword',
+                    );
+                  },
+                  secureTxt: true,
                 ),
                 const SizedBox(height: 50),
-                PasswordField(
-                  passwordController:
+
+                //Confirm Password
+                CustomInputField(
+                  inputFiledController:
                       resetPasswordControllerImp.confirmPasswrod,
                   hintTxt: 'Confirm New Password',
+                  labelTxt: 'password',
+                  icon: Icons.lock_outline,
+                  validator: (value) {
+                    return validateInput(
+                      value: value!,
+                      minValue: 5,
+                      maxValue: 50,
+                      valueType: 'passsword',
+                    );
+                  },
+                  secureTxt: true,
                 ),
 
                 // Remember me and Forgot Password
                 const SizedBox(height: 30),
 
-                // Continue Button
-                ContinueButton(
-                  formKey: _formKey,
+                // Action Button
+                ActionBtn(
+                  btnText: 'Continue',
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
                     resetPasswordControllerImp.goToSuccessResetPassword();
                   },
                 ),

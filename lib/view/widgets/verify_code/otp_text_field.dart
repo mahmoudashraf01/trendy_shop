@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:trendy_shop/controllers/auth/verfiy_code.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
 import 'package:trendy_shop/view/screens/func/otp_create_style_fun.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';

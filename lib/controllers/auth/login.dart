@@ -6,27 +6,38 @@ abstract class LoginController extends GetxController {
   login();
   goToSignUp();
   goToForgetPassword();
-
 }
 
 class LoginControllerImp extends LoginController {
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  final formKey = GlobalKey<FormState>();
 
   @override
   login() {
-    
+    var formdata = formKey.currentState;
+    if (formdata!.validate()) {
+      print('valid');
+    } else {
+      print('Not valid');
+    }
   }
 
   @override
   goToSignUp() {
-    Get.toNamed(AppRouters.signUp);
+    Future.microtask(() {
+      Get.offNamed(AppRouters.signUp);
+    });
   }
 
-   @override
+  @override
   goToForgetPassword() {
-    Get.toNamed(AppRouters.forgetPassword);
+    Future.microtask(() {
+      Get.toNamed(AppRouters.forgetPassword);
+    });
   }
+
+
 
   @override
   void onInit() {
@@ -41,6 +52,4 @@ class LoginControllerImp extends LoginController {
     passwordController.dispose();
     super.dispose();
   }
-  
- 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trendy_shop/binding.dart';
 import 'package:trendy_shop/core/localization/change_local.dart';
 import 'package:trendy_shop/core/localization/translations.dart';
 import 'package:trendy_shop/core/services/services.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Trendy Shop App',
       home: const AppLangauge(),
       routes: routes,
+      initialBinding: MyBinding(),
     );
   }
 }

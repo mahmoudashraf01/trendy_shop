@@ -4,18 +4,24 @@ import 'package:trendy_shop/core/constants/app_routers.dart';
 
 abstract class LoginCheckEmailController extends GetxController {
   checkEmail();
-  goSignUpVerifyCode();
+  goLoginVerifyCode();
 }
 
 class LoginCheckEmailControllerImp extends LoginCheckEmailController {
   late TextEditingController emailController;
+  final formKey = GlobalKey<FormState>();
 
   @override
   checkEmail() {}
 
   @override
-  goSignUpVerifyCode() {
-    Get.toNamed(AppRouters.signUpVerifyCode);
+  goLoginVerifyCode() {
+    var formdata = formKey.currentState;
+    if (formdata!.validate()) {
+      Get.toNamed(AppRouters.verifyCode);
+    } else {
+      print('Not valid');
+    }
   }
 
   @override

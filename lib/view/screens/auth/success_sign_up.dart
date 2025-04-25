@@ -66,7 +66,7 @@ class _SuccessSignUpState extends State<SuccessSignUp> {
               opacity: _showSuccessText ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 500),
               child: Text(
-                'Password Reset Successful!'.tr,
+                'Successfully signed up!'.tr,
                 style: h2Bold.copyWith(
                   color: AppColors.appBordersColor,
                   fontSize: 24,

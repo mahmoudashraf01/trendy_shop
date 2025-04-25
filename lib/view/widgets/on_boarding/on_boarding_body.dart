@@ -44,5 +44,3 @@ class OnboardingBody extends GetView<OnBoardingControllerImp> {
     );
   }
 }
-
-

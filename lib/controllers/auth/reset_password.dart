@@ -3,20 +3,26 @@ import 'package:get/get.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
 
 abstract class ResetPasswordController extends GetxController {
-  checkEmail();
+  resetPassword();
   goToSuccessResetPassword();
 }
 
 class ResetPasswordControllerImp extends ResetPasswordController {
   late TextEditingController confirmPasswrod;
   late TextEditingController passwordController;
+  final formKey = GlobalKey<FormState>();
 
   @override
-  checkEmail() {}
+  resetPassword() {}
 
   @override
   goToSuccessResetPassword() {
-    Get.toNamed(AppRouters.scussessResetPass);
+    var formdata = formKey.currentState;
+    if (formdata!.validate()) {
+      Get.offNamed(AppRouters.scussessResetPass);
+    } else {
+      print('Not valid');
+    }
   }
 
   @override

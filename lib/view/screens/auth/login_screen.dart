@@ -2,25 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/controllers/auth/login.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
+import 'package:trendy_shop/core/func/validate_input.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
-import 'package:trendy_shop/view/widgets/login/build_email_field.dart';
-import 'package:trendy_shop/view/widgets/login/build_password_field.dart';
+import 'package:trendy_shop/view/widgets/custom_input_field.dart';
 import 'package:trendy_shop/view/widgets/login/continue_button.dart';
 import 'package:trendy_shop/view/widgets/login/remember_to_forget_row.dart';
 import 'package:trendy_shop/view/widgets/login/sign_in_options.dart';
 import 'package:trendy_shop/view/widgets/login/social_login_options.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Form(
-            key: _formKey,
+            key: loginController.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -62,38 +55,53 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 50),
 
                 // Email Field
-                EmailField(emailController: loginController.emailController),
+                CustomInputField(
+                  inputFiledController: loginController.emailController,
+                  hintTxt: 'Enter your email',
+                  labelTxt: 'Email',
+                  icon: Icons.email_outlined,
+                  validator: (value) {
+                    return validateInput(
+                      value: value!,
+                      minValue: 5,
+                      maxValue: 50,
+                      valueType: 'email',
+                    );
+                  }, secureTxt: false,
+                ),
                 const SizedBox(height: 20),
 
                 // Password Field
-                PasswordField(
-                  passwordController: loginController.passwordController,
-                  hintTxt: 'Enter Your Password',
+                CustomInputField(
+                  inputFiledController: loginController.passwordController,
+                  hintTxt: 'Enter your Password',
+                  labelTxt: 'password',
+                  icon: Icons.lock_outline,
+                  validator: (value) {
+                    return validateInput(
+                      value: value!,
+                      minValue: 5,
+                      maxValue: 50,
+                      valueType: 'passsword',
+                    );
+                  }, secureTxt: true,
                 ),
                 const SizedBox(height: 20),
 
                 // Remember me and Forgot Password
                 RememberForgetRow(
-                  rememberMe: _rememberMe,
+                  rememberMe: false,
                   onChanged: (value) {
-                    setState(() {
-                      _rememberMe = value!;
-                    });
+                    
                   },
-                  onPressed: loginController.goToForgetPassword,
+                  onPressed: loginController.goToForgetPassword, // <-- FIXED HERE
                 ),
                 const SizedBox(height: 30),
 
                 // Continue Button
                 ContinueButton(
-                  formKey: _formKey,
+                  formKey: loginController.formKey,
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // TODO: Implement login functionality
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Processing login...'.tr)),
-                      );
-                    }
                     loginController.login();
                   },
                 ),
@@ -104,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 20),
 
                 // Sign Up Option
-                SignInOptions(onTap: loginController.goToSignUp),
+                SignInOptions(onTap: loginController.goToSignUp), // <-- FIXED HERE
               ],
             ),
           ),

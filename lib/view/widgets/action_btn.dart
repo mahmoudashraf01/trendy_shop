@@ -3,9 +3,14 @@ import 'package:get/get.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
 
 class ActionBtn extends StatelessWidget {
-  const ActionBtn({super.key, required this.btnText, required this.onPressed});
+  const ActionBtn({
+    super.key,
+    required this.btnText,
+    required this.onPressed,
+  });
   final String btnText;
   final void Function() onPressed;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

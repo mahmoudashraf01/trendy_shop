@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trendy_shop/controllers/auth/login_check_email.dart';
 import 'package:trendy_shop/core/constants/app_routers.dart';
+import 'package:trendy_shop/core/func/validate_input.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
 import 'package:trendy_shop/view/widgets/action_btn.dart';
-import 'package:trendy_shop/view/widgets/login/build_email_field.dart';
+import 'package:trendy_shop/view/widgets/custom_input_field.dart';
 import 'package:trendy_shop/view/widgets/my_back_button.dart';
 
 class LoginCheckEmailScreen extends StatefulWidget {
@@ -16,9 +17,8 @@ class LoginCheckEmailScreen extends StatefulWidget {
 
 class _LoginCheckEmailScreenState extends State<LoginCheckEmailScreen> {
   LoginCheckEmailControllerImp checkEmailController = Get.put(
-      LoginCheckEmailControllerImp(),
-    );
-  final _formKey = GlobalKey<FormState>();
+    LoginCheckEmailControllerImp(),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,7 @@ class _LoginCheckEmailScreenState extends State<LoginCheckEmailScreen> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Form(
-            key: _formKey,
+            key: checkEmailController.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -51,10 +51,21 @@ class _LoginCheckEmailScreenState extends State<LoginCheckEmailScreen> {
                 const SizedBox(height: 50),
 
                 // Email Field
-                EmailField(
-                  emailController: checkEmailController.emailController,
+                CustomInputField(
+                  inputFiledController: checkEmailController.emailController,
+                  hintTxt: 'Enter your email',
+                  labelTxt: 'Email',
+                  icon: Icons.email_outlined,
+                  validator: (value) {
+                    return validateInput(
+                      value: value!,
+                      minValue: 5,
+                      maxValue: 50,
+                      valueType: 'email',
+                    );
+                  },
+                  secureTxt: false,
                 ),
-
                 // Remember me and Forgot Password
                 const SizedBox(height: 30),
 
@@ -62,8 +73,7 @@ class _LoginCheckEmailScreenState extends State<LoginCheckEmailScreen> {
                 ActionBtn(
                   btnText: 'Check',
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                    checkEmailController.goSignUpVerifyCode();
+                    checkEmailController.goLoginVerifyCode();
                   },
                 ),
                 const SizedBox(height: 40),

@@ -16,7 +16,7 @@ class OnBoardingControllerImp extends OnBoardingController {
   next() {
     currPage++;
     if (currPage > onBoardingList.length - 1) {
-      Get.offAllNamed(AppRouters.login);
+      Get.offAllNamed(AppRouters.signUp);
     }
     else{
       pageController.animateToPage(

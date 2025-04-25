@@ -4,7 +4,6 @@ import 'package:trendy_shop/view/screens/auth/login_check_email.dart';
 import 'package:trendy_shop/view/screens/auth/forget_pasword_screen.dart';
 import 'package:trendy_shop/view/screens/auth/login_screen.dart';
 import 'package:trendy_shop/view/screens/auth/reset_password.dart';
-import 'package:trendy_shop/view/screens/auth/sign_up_check_email.dart';
 import 'package:trendy_shop/view/screens/auth/sign_up_screen.dart';
 import 'package:trendy_shop/view/screens/auth/sign_up_verify_code.dart';
 import 'package:trendy_shop/view/screens/auth/success_sign_up.dart';
@@ -21,7 +20,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRouters.verifyCode: (context) => const VerifyCodeScreen(),
   AppRouters.resetPassword: (context) => const ResetPasswordScreen(),
   AppRouters.logincheckEmail: (context) => const LoginCheckEmailScreen(),
-  AppRouters.signUpCheckEmail: (context) => const SignUpCheckEmailScreen(),
   AppRouters.scussessSignUp: (context) => const SuccessSignUp(),
   AppRouters.scussessResetPass: (context) => SuccessResetPassword(),
   AppRouters.signUpVerifyCode: (context) => SignUpVerifyCode(),

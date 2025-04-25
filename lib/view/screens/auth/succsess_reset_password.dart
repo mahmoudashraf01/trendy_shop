@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trendy_shop/core/constants/app_routers.dart';
+import 'package:trendy_shop/controllers/auth/success_reset_password.dart';
 import 'package:trendy_shop/utils/styles/colors.dart';
 import 'package:trendy_shop/utils/styles/text.dart';
 
@@ -29,9 +29,10 @@ class _SuccessResetPasswordState extends State<SuccessResetPassword> {
 
   @override
   Widget build(BuildContext context) {
+    SuccessResetPasswordControllerImp successResetPasswordControllerImp =
+        Get.put(SuccessResetPasswordControllerImp());
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -105,12 +106,9 @@ class _SuccessResetPasswordState extends State<SuccessResetPassword> {
                     ),
                   ),
                   onPressed: () {
-                    Get.offAllNamed(AppRouters.login);
+                    successResetPasswordControllerImp.goToLogin();
                   },
-                  child: Text(
-                    'Return to Login'.tr,
-                    style: title1Bold,
-                  ),
+                  child: Text('Return to Login'.tr, style: title1Bold),
                 ),
               ),
             ),
