@@ -7,14 +7,18 @@ class ActionBtn extends StatelessWidget {
     super.key,
     required this.btnText,
     required this.onPressed,
+    required this.width,
+    required this.textStyle,
   });
   final String btnText;
   final void Function() onPressed;
+  final double? width;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: width,
       height: 56,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -24,10 +28,7 @@ class ActionBtn extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Text(
-          btnText.tr,
-          style: const TextStyle(fontSize: 18, color: Colors.white),
-        ),
+        child: Text(btnText.tr, style: textStyle),
       ),
     );
   }

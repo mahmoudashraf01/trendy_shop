@@ -71,7 +71,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   btnText: 'Enter To Verify',
                   onPressed: () {
                     forgetPasswrodController.goToVerifyCode();
-                  },
+                  }, width: double.infinity, textStyle: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 const SizedBox(height: 40),
               ],

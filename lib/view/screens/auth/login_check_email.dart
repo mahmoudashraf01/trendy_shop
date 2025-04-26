@@ -74,7 +74,7 @@ class _LoginCheckEmailScreenState extends State<LoginCheckEmailScreen> {
                   btnText: 'Check',
                   onPressed: () {
                     checkEmailController.goLoginVerifyCode();
-                  },
+                  }, width: double.infinity, textStyle: title1,
                 ),
                 const SizedBox(height: 40),
               ],

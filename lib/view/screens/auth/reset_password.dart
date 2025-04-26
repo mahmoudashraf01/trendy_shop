@@ -85,7 +85,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   btnText: 'Continue',
                   onPressed: () {
                     resetPasswordControllerImp.goToSuccessResetPassword();
-                  },
+                  }, width: double.infinity, textStyle: title1,
                 ),
                 const SizedBox(height: 40),
               ],
