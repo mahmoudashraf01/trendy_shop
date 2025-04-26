@@ -32,7 +32,7 @@ class SignUpScreen extends StatelessWidget {
         canPop: false,
         onPopInvokedWithResult: (didPop, result) async {
           if (!didPop) {
-             alertExitApp(context);
+            alertExitApp(context);
           }
         },
         child: GetBuilder<SignUpControllerImp>(
@@ -117,7 +117,10 @@ class SignUpScreen extends StatelessWidget {
                               signUpController.passwordController,
                           hintTxt: 'Enter your Password',
                           labelTxt: 'password',
-                          icon: Icons.lock_outline,
+                          icon:
+                              signUpController.isShowPassword
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
                           validator: (value) {
                             return validateInput(
                               value: value!,
@@ -126,7 +129,10 @@ class SignUpScreen extends StatelessWidget {
                               valueType: 'passsword',
                             );
                           },
-                          secureTxt: true,
+                          secureTxt: signUpController.isShowPassword,
+                          onTapSuffixIcon: () {
+                            signUpController.showPassword();
+                          },
                         ),
                         const SizedBox(height: 20),
 

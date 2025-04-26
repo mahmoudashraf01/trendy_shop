@@ -14,6 +14,13 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController passwordController;
   final formKey = GlobalKey<FormState>();
 
+  bool isShowPassword = true;
+
+  showPassword() {
+   isShowPassword = isShowPassword == true ? false : true;
+    update();
+  }
+
   @override
   signUp() {
     var formdata = formKey.currentState;

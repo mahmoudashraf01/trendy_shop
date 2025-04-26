@@ -10,7 +10,9 @@ class CustomInputField extends StatelessWidget {
     required this.hintTxt,
     required this.labelTxt,
     required this.icon,
-    required this.validator, required this.secureTxt,
+    required this.validator,
+    required this.secureTxt,
+    this.onTapSuffixIcon,
   });
   final TextEditingController inputFiledController;
   final String hintTxt;
@@ -18,6 +20,7 @@ class CustomInputField extends StatelessWidget {
   final IconData icon;
   final String? Function(String?) validator;
   final bool secureTxt;
+  final void Function()? onTapSuffixIcon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -53,7 +56,7 @@ class CustomInputField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.red),
           gapPadding: 10,
         ),
-        suffixIcon: Icon(icon),
+        suffixIcon: InkWell(onTap: onTapSuffixIcon, child: Icon(icon)),
       ),
       validator: validator,
     );
