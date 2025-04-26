@@ -25,8 +25,7 @@ class MyApp extends StatelessWidget {
       translations: AppTranslation(),
       debugShowCheckedModeBanner: false,
       title: 'Trendy Shop App',
-      home: const AppLangauge(),
-      routes: routes,
+      getPages: getroutes,
       initialBinding: MyBinding(),
     );
   }

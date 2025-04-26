@@ -1,4 +1,5 @@
-class AppRouters{
+class AppRouters {
+  static const String language = "/";
   static const String login = "/login";
   static const String signUp = "/signUp";
   static const String onBoarding = "/onBoarding";
@@ -9,6 +10,6 @@ class AppRouters{
   static const String logincheckEmail = "/logincheckEmail";
   static const String signUpCheckEmail = "/signUpCheckEmail";
   static const String scussessSignUp = "/scussessSignUp";
-  static const String scussessResetPass= "/scussessResetPass";
-  static const String home= "/home";
+  static const String scussessResetPass = "/scussessResetPass";
+  static const String home = "/home";
 }
